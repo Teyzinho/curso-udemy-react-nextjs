@@ -1,27 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { Component } from 'react'
-
 class App extends Component {
 
-  // constructor(props) {
-  //   super(props)
+  constructor(props) {
+    super(props)
 
-  //   this.handleNameClick = this.handleNameClick.bind(this) // Código para a função ter acesso ao "this"
+    this.handleNameClick = this.handleNameClick.bind(this) // Código para a função ter acesso ao "this"
 
-  //   this.state = {
-  //     name: "tey",
-  //     counter: 1
-  //   }
-  // }
- 
-  state = { //Sem o constructor
-    name: "tey",
-    counter: 1
+    // this.state = {
+    //   name: "tey",
+    // }
   }
 
-  handleNameClick() { // Metodo de mudar um state com a bind "this"
+  state = { //Metodo criar variáveis sem o constructor
+    name: "tey",
+    counter: 1,
+    posts: [
+      {
+        id: 1,
+        title: "Titulo 1",
+        body: "Body 1"
+      },
+      {
+        id: 2,
+        title: "Titulo 2",
+        body: "Body 2"
+      },
+      {
+        id: 3,
+        title: "Titulo 3",
+        body: "Body 3"
+      }
+    ]
+  }
+
+  timeoutUpdate = null;
+
+  handleNameClick() { // Metodo de mudar um state com a bind "this" no constructor
     this.setState({ name: "teyzinho" })
   }
 
@@ -30,13 +46,45 @@ class App extends Component {
     this.setState({ counter: counter + 1 })
   }
 
+  componentDidMount() { //Metodo de ciclo de vida 'DidMount' como se fosse o UseEffect
+    this.handleTimeout();
+  }
+
+  componentDidUpdate(){ // Metodo de update
+    this.handleTimeout();
+  }
+
+  componentWillUnmount(){ // Quando componente é desmontado: limpa o lixo (reseta o timeout)
+    clearTimeout(this.timeoutUpdate);
+  }
+
+
+  handleTimeout = () => {
+    const { posts, counter } = this.state;
+    let length = posts.length + 1
+
+    if(length <= 6) {
+      posts.push({
+        id: length,
+        title: `Titulo ${length}`,
+        body: `Body ${length}`
+      })
+    }
+
+    this.timeoutUpdate = setTimeout(() => {
+      this.setState({
+        posts: posts, counter: counter + 1
+      })
+    }, 1000)
+  }
+
   render() {
     const nome = this.state.name
     const { counter } = this.state
+    const { posts } = this.state
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <div>
           <p>
             State : {nome}
           </p>
@@ -46,15 +94,13 @@ class App extends Component {
           <button onClick={this.handleClick}>
             Increment {counter}
           </button>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        </div>
+
+        <div>
+          {posts.map(post => (
+            <p key={post.id}>id: {post.id}, title: {post.title}, body: {post.body} </p>
+          ))}
+        </div>
       </div>
     );
   }
