@@ -16,23 +16,7 @@ class App extends Component {
   state = { //Metodo criar variáveis sem o constructor
     name: "tey",
     counter: 1,
-    posts: [
-      {
-        id: 1,
-        title: "Titulo 1",
-        body: "Body 1"
-      },
-      {
-        id: 2,
-        title: "Titulo 2",
-        body: "Body 2"
-      },
-      {
-        id: 3,
-        title: "Titulo 3",
-        body: "Body 3"
-      }
-    ]
+    posts: []
   }
 
   timeoutUpdate = null;
@@ -46,44 +30,51 @@ class App extends Component {
     this.setState({ counter: counter + 1 })
   }
 
+  fetchPosts = async () => {
+    const response = fetch('https://jsonplaceholder.typicode.com/posts');
+    const photosResponse = fetch('https://jsonplaceholder.typicode.com/photos');
+
+    const [posts, photos] = await Promise.all([response, photosResponse])
+    const postsJson = await posts.json();
+    const photosJson = await photos.json();
+
+    const postsAndPhotos = postsJson.map((post, index) => {
+      return {...post, url: photosJson[index].url }
+    } )
+
+    this.setState({ posts: postsAndPhotos })
+
+  }
+
   componentDidMount() { //Metodo de ciclo de vida 'DidMount' como se fosse o UseEffect
+    this.fetchPosts()
+  }
+
+  componentDidUpdate() { // Metodo de update
     this.handleTimeout();
   }
 
-  componentDidUpdate(){ // Metodo de update
-    this.handleTimeout();
-  }
-
-  componentWillUnmount(){ // Quando componente é desmontado: limpa o lixo (reseta o timeout)
+  componentWillUnmount() { // Quando componente é desmontado: limpa o lixo (reseta o timeout)
     clearTimeout(this.timeoutUpdate);
   }
 
-
   handleTimeout = () => {
-    const { posts, counter } = this.state;
-    let length = posts.length + 1
-
-    if(length <= 6) {
-      posts.push({
-        id: length,
-        title: `Titulo ${length}`,
-        body: `Body ${length}`
-      })
-    }
-
+    const { counter } = this.state;
     this.timeoutUpdate = setTimeout(() => {
       this.setState({
-        posts: posts, counter: counter + 1
+        counter: counter + 1
       })
     }, 1000)
   }
 
   render() {
+
     const nome = this.state.name
     const { counter } = this.state
     const { posts } = this.state
+
     return (
-      <div className="App">
+      <div>
         <div>
           <p>
             State : {nome}
@@ -96,9 +87,15 @@ class App extends Component {
           </button>
         </div>
 
-        <div>
+        <div className='post-container'>
           {posts.map(post => (
-            <p key={post.id}>id: {post.id}, title: {post.title}, body: {post.body} </p>
+            <div key={post.id} className='post-card'>
+              <img src={post.url}alt="img"/>
+              <h2>
+                {post.title}
+              </h2>
+              <p>{post.body}</p>
+            </div>
           ))}
         </div>
       </div>
