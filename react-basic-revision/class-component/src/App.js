@@ -39,8 +39,8 @@ class App extends Component {
     const photosJson = await photos.json();
 
     const postsAndPhotos = postsJson.map((post, index) => {
-      return {...post, url: photosJson[index].url }
-    } )
+      return { ...post, url: photosJson[index].url }
+    })
 
     this.setState({ posts: postsAndPhotos })
 
@@ -74,7 +74,7 @@ class App extends Component {
     const { posts } = this.state
 
     return (
-      <div>
+      <section>
         <div>
           <p>
             State : {nome}
@@ -90,7 +90,7 @@ class App extends Component {
         <div className='post-container'>
           {posts.map(post => (
             <div key={post.id} className='post-card'>
-              <img src={post.url}alt="img"/>
+              <img src={post.url} alt="img" />
               <h2>
                 {post.title}
               </h2>
@@ -98,7 +98,7 @@ class App extends Component {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     );
   }
 }

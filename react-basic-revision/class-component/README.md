@@ -67,7 +67,7 @@ class Counter extends Component {
 }
 
 export default Counter;
-
+```
 ## Conclusão
 
 Embora os componentes de classe tenham sido amplamente utilizados no passado, a abordagem mais moderna do React envolve o uso de functional components e hooks. No entanto, entender componentes de classe ainda é relevante para compreender o histórico do React e lidar com código legado.
