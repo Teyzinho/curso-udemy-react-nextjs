@@ -47,8 +47,18 @@ describe('makePoniesPink', () => {
 
 ## Função de Coverage
 
+Checa se fizemos todos os testes
+
 ```
+
 npm test -- --coverage
+
+```
+
+```
+
+npm test -- --watchAll="false" --coverage
+
 ```
 
 ### Documentação Oficial : 
