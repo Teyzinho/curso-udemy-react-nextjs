@@ -45,6 +45,12 @@ describe('makePoniesPink', () => {
 
 ```
 
+## Função de Coverage
+
+```
+npm test -- --coverage
+```
+
 ### Documentação Oficial : 
 https://jestjs.io/pt-BR/
 ### Repositório :
