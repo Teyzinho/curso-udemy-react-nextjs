@@ -35,4 +35,9 @@ describe("<Button />", () => {
     expect(button).toBeEnabled();
   });
 
+  it("should match the snapshot", () => { //Verifica se o componente foi editado ou não a partir de uma snapshot ('foto')
+    const {container} = render(<Button text="Load more" disabled={false} />);
+    expect(container.firstChild).toMatchSnapshot()
+  });
+
 });
