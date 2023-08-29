@@ -1,36 +1,37 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-import { TextInput } from ".";
+import { TextInput } from '.';
 
-describe("</TextInput />", () => {
-  it("should have a value of seachValue", () => {
+describe('</TextInput />', () => {
+  it('should have a value of seachValue', () => {
     const fn = jest.fn(); //mock função
-    render(<TextInput handleChange={fn} searchValue={'test'}/>)
+    render(<TextInput handleChange={fn} searchValue={'test'} />);
 
-    const input = screen.getByPlaceholderText(/type your search/i)
+    const input = screen.getByPlaceholderText(/type your search/i);
     expect(input).toBeInTheDocument();
 
-    expect(input.value).toBe('test')
+    expect(input.value).toBe('test');
   });
 
-  it("should call handleChange function on each key pressed", () => {
+  it('should call handleChange function on each key pressed', () => {
     const fn = jest.fn(); //mock função
-    render(<TextInput handleChange={fn}/>)
+    render(<TextInput handleChange={fn} searchValue={'valor'} />);
 
-    const input = screen.getByPlaceholderText(/type your search/i)
+    const input = screen.getByPlaceholderText(/type your search/i);
 
-    const typeValue = 'value'
+    const typeValue = 'value';
 
-    userEvent.type(input, typeValue) //Simulação do usuário digitando typeValue tecla por tecla
-    
-    expect(input.value).toBe(typeValue)
-    expect(fn).toHaveBeenCalledTimes(typeValue.length) // espera que a função fn seja chamada o numero de letras do typeValue
+    userEvent.type(input, typeValue); //Simulação do usuário digitando typeValue tecla por tecla
+
+    expect(input.value).toBe('valor');
+    expect(fn).toHaveBeenCalledTimes(typeValue.length); // espera que a função fn seja chamada o numero de letras do typeValue
   });
 
-  it("should match snapshot", () => {
-    const {container} = render(<TextInput />)
+  it('should match snapshot', () => {
+    const fn = jest.fn();
+    const { container } = render(<TextInput handleChange={fn} searchValue={''} />);
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

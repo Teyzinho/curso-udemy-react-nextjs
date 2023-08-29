@@ -1,7 +1,5 @@
-describe("<Home />", () => {
-
-  test("dummy test", () => {
+describe('<Home />', () => {
+  test('dummy test', () => {
     expect(1).toBe(1);
   });
-
 });
