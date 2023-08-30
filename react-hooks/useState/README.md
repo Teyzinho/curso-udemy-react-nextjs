@@ -27,3 +27,6 @@ return (
 
 ```
 No exemplo acima, o useState é usado para armazenar o número de vezes que o botão Adicionar 1 foi clicado. A função handleClick chama a função retornada pelo useState para atualizar o estado com o novo valor.
+
+## documentação 
+https://pt-br.legacy.reactjs.org/docs/hooks-state.html
