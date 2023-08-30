@@ -61,7 +61,7 @@ npm test -- --watchAll="false" --coverage
 
 ```
 
-### Documentação Oficial : 
+### Documentação Oficial :
 https://jestjs.io/pt-BR/
 ### Repositório :
 https://github.com/sapegin/jest-cheat-sheet
@@ -76,3 +76,17 @@ Os mocks, também conhecidos como "mock objects" ou "simulacros", são ferrament
 - Eficiência: Mocks evitam a necessidade de acessar recursos externos, como bancos de dados ou APIs, tornando os testes mais rápidos e eficientes.
 
 - Controle de Comportamento: Mocks permitem definir o comportamento específico que você deseja para as dependências simuladas, facilitando a criação de cenários de teste precisos.
+
+## Biblioteca para criação de Apis para mocks
+
+Em alguns casos você precisará fazer um mock para simular uma Api, neste casos podemos utilizar a biblioteca Mock service Worker
+
+```
+
+  npm install msw --save-dev
+  # or
+  yarn add msw --dev
+
+```
+
+ - Documentação : https://mswjs.io/docs/getting-started/install
