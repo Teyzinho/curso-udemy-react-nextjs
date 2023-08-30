@@ -48,6 +48,15 @@ rodar o comando:
 
   Crie um arquivo .prettierrc.js em sua raiz do projeto.
 
+  ou
+
+  ```
+  # prittier com eslint
+
+    npm i -D prettier eslint-plugin-prettier eslint-config-prettier
+
+  ```
+
 ## Prop-Types
 
 os eslint pode ser configurado para que você tenha que passar prop types
