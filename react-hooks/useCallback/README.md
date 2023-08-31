@@ -20,8 +20,8 @@ function ParentComponent() {
 
   // Use useCallback para memorizar a função callback
   const handleButtonClick = useCallback(() => {
-    setCount(count + 1);
-  }, [count]); // Dependência que aciona a recriação da função
+    setCounter((c) => c + num);
+  }, []); // Dependência que aciona a recriação da função
 
   return (
     <div>
@@ -37,3 +37,7 @@ function ChildComponent({ onClick }) {
 
 export default ParentComponent;
 ```
+
+## Documentação
+
+https://pt-br.legacy.reactjs.org/docs/hooks-reference.html#usecallback

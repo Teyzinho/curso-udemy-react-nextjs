@@ -49,3 +49,6 @@ function App() {
 
 export default App;
 ```
+
+## Documentação:
+https://pt-br.legacy.reactjs.org/docs/hooks-reference.html#usecallback
