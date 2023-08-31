@@ -1,0 +1,1 @@
+# Exemplo simples de como utilizar o reducer e o Context juntos
