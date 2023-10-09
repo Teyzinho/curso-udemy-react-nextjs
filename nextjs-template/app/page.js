@@ -3,11 +3,13 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Container = styled.div`
-  background: white;
-  color:black;
+  ${({theme}) => css`
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
+  `}
 `
 
 export default function Home() {
