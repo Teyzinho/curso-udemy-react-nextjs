@@ -1,7 +1,6 @@
-import { ThemeProvider } from 'styled-components';
-import { theme } from './theme';
+import ThemeProvider from './ThemeProvider';
 import { render } from '@testing-library/react';
 
 export const renderTheme = (children) => {
-  return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
+  return render(<ThemeProvider>{children}</ThemeProvider>);
 };
