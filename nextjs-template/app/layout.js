@@ -1,5 +1,5 @@
-import ThemeProvider from '@/styles/ThemeProvider';
-import StyledComponentsRegistry from '../lib/registry';
+import ThemeProvider from '@/src/styles/ThemeProvider';
+import StyledComponentsRegistry from '../src/lib/registry';
 import './globals.css';
 import P from 'prop-types';
 import { Inter } from 'next/font/google';
@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <ThemeProvider>{children}</ThemeProvider>
