@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react';
-import { SectionContainer } from '.';
+import { Dummy } from '.';
 import { renderTheme } from '../../styles/render-theme';
 
-describe('<SectionContainer />', () => {
+describe('<Dummy />', () => {
   it('should render', () => {
-    renderTheme(<SectionContainer>Children</SectionContainer>);
+    renderTheme(<Dummy />);
   });
 });
