@@ -1,4 +1,5 @@
-import { Dummy } from '.';
+import { Dummy, DummyProps } from '.';
+import { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Dummy',
@@ -9,9 +10,9 @@ export default {
   argTypes: {
     children: { type: 'string' },
   },
-};
+} as Meta;
 
-export const Template = (args : any )  => {
+export const Template: StoryFn<DummyProps> = (args) => {
   return (
     <div>
       <Dummy {...args} />

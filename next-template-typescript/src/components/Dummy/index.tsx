@@ -1,10 +1,13 @@
-import P from 'prop-types';
 import * as Styled from './styles';
 
-export const Dummy = () => {
+export type DummyProps = {
+  children: string;
+};
+
+export const Dummy = ({ children }: DummyProps) => {
   return (
     <Styled.Container>
-      <h1>Dummy</h1>
+      <h1>{children}</h1>
     </Styled.Container>
   );
 };
