@@ -11,7 +11,7 @@ export default {
   },
 };
 
-export const Template = (args) => {
+export const Template = (args : any )  => {
   return (
     <div>
       <Dummy {...args} />
